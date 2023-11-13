@@ -10,14 +10,6 @@
             <div class="p-5 ">
                 @if (Auth::user())
                 <div class="mb-4 flex items-center justify-between">
-                    <div>
-                        <a href="{{ route('petitions.edit', $petition) }}" class="bg-blue-500 px-2 py-2 rounded-lg text-white px-4 py-2">Éditer</a>
-                        <form action="{{ route('petitions.destroy', $petition) }}" method="POST" class="inline-block">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="bg-red-500 text-white px-2 py-2 rounded-lg" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette pétition?')">Supprimer</button>
-                        </form>
-                    </div>
                     <a href="{{ route('petitions.index') }}" class="text-gray-600 ml-2 bg-green-100 rounded-xl"> <- Retour à la liste des pétitions</a>
                 </div>
                 @endif
@@ -35,7 +27,7 @@
                     <p class="text-gray-700">Objectif: {{ $petition->objectif }}</p>
                 </div>
                 <div class="mb-4">
-                    <p class="text-gray-700">{{ $petition->description }}</p>
+                    <p class="text-gray-700">{!! $petition->description  !!}</p>
                 </div>  
             </div>
         </div>

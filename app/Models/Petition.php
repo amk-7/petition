@@ -13,4 +13,9 @@ class Petition extends Model
     {
         return $this->hasMany(Signataire::class);
     }
+
+    public function showDescription()
+    {
+        return substr($this->description, 0, 500)."...";
+    }
 }

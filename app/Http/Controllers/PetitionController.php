@@ -71,9 +71,9 @@ class PetitionController extends Controller
         }
         $petition->update($request->all());
 
-        return redirect()->route('petitions.show', $petition->id);
+        return redirect()->route('petitions.index');
     }
-
+    
     public function destroy(Petition $petition)
     {
         if ($petition->image) {

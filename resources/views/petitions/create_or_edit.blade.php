@@ -42,7 +42,8 @@
                 </div>
                     <div class="mb-4">
                         <label for="description" class="block text-gray-700 font-bold">Description de la Pétition</label>
-                        <textarea name="description" id="description" class="form-textarea mt-1 block w-full" rows="4" required>{{ old('description', isset($petition) ? $petition->description : '') }}</textarea>
+                        <input type="text" name="description" id="description" hidden>
+                        <div id="editor"></div>
                         @error('description')
                             <p class="text-red-500 text-xs">{{ $message }}</p>
                         @enderror
@@ -66,4 +67,20 @@
             </div>
         </div>
     </div>
+    <script src="/ckeditor5/ckeditor.js"></script>
+
+    <script>
+        ClassicEditor
+        .create(document.querySelector('#editor'), {
+        })
+        .then(editor => {
+            editor.model.document.on('change:data', () => {
+                const content = editor.getData();
+                document.querySelector('#description').value = content;
+            });
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    </script>
 </x-app-layout>

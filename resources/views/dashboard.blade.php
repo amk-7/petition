@@ -19,17 +19,30 @@
                     <div class="p-6 text-gray-900 dark:text-gray-100 w-64 md:w-full">
                         <h1 class="font-semibold text-xl mb-3"> {{ $petition->titre }} </h1>
                         <p>
-                            {{ $petition->description }}
+                            {!! $petition->showDescription() !!}
                         </p>
                         <div class="mt-4 flex space-x-3">
+                            @if($petition->etat)
                             <a href="{{ route('petitions.show', $petition) }}">
-                                <button class="bg-green-500 text-white px-2 py-1 rounded-lg">Lire +</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded-lg">Lire +</button>
                             </a>
+                            @else
+                                <button class="bg-green-300 text-white px-2 py-1 rounded-lg">Lire +</button>
+                            @endif
+                            
                             <a href="{{ route('petitions.export', $petition) }}">
-                                <button class="bg-blue-500 text-white px-2 py-1 rounded-lg">Signataires</button>
+                                <button class="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded-lg">Signataires</button>
                             </a>
                             <!-- Bouton Partager sur WhatsApp -->
-                            <button id="copierBtn" onclick="copierLien(`{{ route('petitions.show', $petition) }}`)" class="bg-gray-500 text-white px-2 py-1 rounded-lg">copier le lien</button>
+                            <button id="copierBtn" onclick="copierLien(`{{ route('petitions.show', $petition) }}`)" class="bg-gray-500 hover:bg-gray-600 text-white px-2 py-1 rounded-lg">copier le lien</button>
+                            <div>
+                                <a href="{{ route('petitions.edit', $petition) }}" class="bg-orange-500 hover:bg-orange-600 px-2 py-2 rounded-lg text-white px-4 py-2">Éditer</a>
+                                <form action="{{ route('petitions.destroy', $petition) }}" method="POST" class="inline-block">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-2 py-2 rounded-lg" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette pétition?')">Supprimer</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>

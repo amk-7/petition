@@ -4,11 +4,23 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Signataire;
 use App\Models\Petition;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class SignataireSeeder extends Seeder
 {
     public function run()
     {
+
+        DB::table('users')->insert([
+            'name' => 'Admin',
+            'email' => 'admin@ifnti.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'), // Assurez-vous de changer le mot de passe
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
         // Attacher des signataires à la première pétition
         $petition1 = Petition::create([
             'titre' => 'Pétition pour la protection de l\'environnement',

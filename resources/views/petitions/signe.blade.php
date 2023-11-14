@@ -1,6 +1,6 @@
 <div>
     <div class="mb-12">
-        <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+        <div class="w-full bg-gray-200 rounded-full h-2.5">
             <div class="bg-blue-600 h-2.5 rounded-full" style="{{ 'width:'.( $petition->signataires->count()*100/$petition->objectif).'%' }}"></div>
         </div>
         <div class="flex justify-between">

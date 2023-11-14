@@ -4,7 +4,7 @@
         {{ isset($petition) ? 'Éditer la Pétition' : 'Enregistrer une Pétition' }}
         </h2>
     </x-slot>
-    <div class="py-12">
+    <div class="py-12 flex flex-col items-center m-3">
         <div class="max-w-7xl mx-auto flex flex-col items-center sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row items-center bg-white  dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-5">
             @if(isset($petition))
@@ -40,10 +40,10 @@
                         <p class="text-red-500 text-xs">{{ $message }}</p>
                     @enderror
                 </div>
-                    <div class="mb-4">
+                    <div class="mb-4 w-80 md:w-full">
                         <label for="description" class="block text-gray-700 font-bold">Description de la Pétition</label>
                         <input type="text" name="description" id="description" hidden>
-                        <div id="editor"></div>
+                        <div id="editor" class=""></div>
                         @error('description')
                             <p class="text-red-500 text-xs">{{ $message }}</p>
                         @enderror

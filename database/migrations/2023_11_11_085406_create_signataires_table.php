@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('petition_id')->constrained();
             $table->string('nom');
             $table->string('prenom');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('telephone');
             $table->string('pays');
             $table->string('ville');

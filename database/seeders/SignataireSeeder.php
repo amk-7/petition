@@ -27,6 +27,7 @@ class SignataireSeeder extends Seeder
             'etat' => 1,
             'objectif' => 10000,
             'description' => 'Signez cette pétition pour montrer votre soutien à la protection de l\'environnement.',
+            'image' => 'default.png',
         ]);
 
         Signataire::create([
@@ -55,6 +56,7 @@ class SignataireSeeder extends Seeder
             'etat' => 1,
             'objectif' => 5000,
             'description' => 'Soutenez l\'éducation de qualité en signant cette pétition.',
+            'image' => 'default.png',
         ]);
 
         Signataire::create([

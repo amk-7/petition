@@ -1,12 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800">
         {{ isset($petition) ? 'Éditer la Pétition' : 'Enregistrer une Pétition' }}
         </h2>
     </x-slot>
     <div class="py-12 flex flex-col items-center m-3">
         <div class="max-w-7xl mx-auto flex flex-col items-center sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center bg-white  dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-5">
+            <div class="flex flex-col md:flex-row items-center bg-white overflow-hidden shadow-sm sm:rounded-lg p-5">
             @if(isset($petition))
                 <form action="{{ route('petitions.update', $petition) }}" method="POST" enctype="multipart/form-data">
                     @method('PUT')
@@ -42,8 +42,8 @@
                 </div>
                     <div class="mb-4 w-80 md:w-full">
                         <label for="description" class="block text-gray-700 font-bold">Description de la Pétition</label>
-                        <input type="text" name="description" id="description" hidden>
-                        <div id="editor" class=""></div>
+                        <input type="text" name="description" id="description" value="{!! old('description', isset($petition) ? $petition->description : '') !!}" hidden>
+                        <div id="editor" class="">{!! old('description', isset($petition) ? $petition->description : '') !!}</div>
                         @error('description')
                             <p class="text-red-500 text-xs">{{ $message }}</p>
                         @enderror

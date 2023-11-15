@@ -1,12 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800">
             {{ __('Détails de la pétition : ') }} {{ $petition->titre }}
         </h2>
     </x-slot>
     <div class="py-12 w-2/3 m-auto flex flex-col items-center lg:flex-row space-y-3 lg:space-y-0 space-x-0 lg:space-x-3" style="">
         @if ($petition->etat)
-        <div class="rounded-lg flex flex-col items-center lg:w-2/3 w-full" >
+        <div class="rounded-lg flex flex-col items-center xl:w-2/3 w-full" >
             <div class="p-5 ">
                 @if (Auth::user())
                 <div class="mb-4 flex items-center justify-between">
@@ -31,7 +31,7 @@
                 </div>  
             </div>
         </div>
-        <div class="p-3 bg-white rounded-lg lg:w-1/3 w-full">
+        <div class="p-3 bg-white rounded-lg xl:w-1/3 w-full">
             @include('petitions.signe')
         </div>
         @else

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Petition;
 use App\Exports\SignatairesExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Storage;
 
 class PetitionController extends Controller
 {

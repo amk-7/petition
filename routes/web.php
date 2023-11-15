@@ -35,10 +35,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/petitions/{petition}/edit', [PetitionController::class, 'edit'])->name('petitions.edit');
     Route::put('/petitions/{petition}', [PetitionController::class, 'update'])->name('petitions.update');
     Route::delete('/petitions/{petition}', [PetitionController::class, 'destroy'])->name('petitions.destroy');
-    Route::post('/petitions/{petition}/signataires', [SignataireController::class, 'store'])->name('signataires.store');
     Route::get('/petitions/{petition}/export', [PetitionController::class, 'exportSignataires'])->name('petitions.export');
 });
-
+Route::post('/petitions/{petition}/signataires', [SignataireController::class, 'store'])->name('signataires.store');
 Route::get('/petitions/{petition}', [PetitionController::class, 'show'])->name('petitions.show');
 
 require __DIR__.'/auth.php';

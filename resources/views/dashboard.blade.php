@@ -17,7 +17,7 @@
                 <div class="flex flex-col md:flex-row items-center bg-white  overflow-hidden shadow-sm sm:rounded-lg mb-3">
                     <img class="w-32 rounded-l-xl" src="/storage/petitions/{{ $petition->image }}" alt="">
                     <div class="p-6 text-gray-900 w-64 md:w-full">
-                        <h1 class="font-semibold text-xl mb-3"> {{ $petition->titre }} </h1>
+                        <h1 class="font-semibold text-xl mb-3"> {{ $petition->titre }} ({{ $petition->signataires->count() }})</h1>
                         <p>
                             {!! $petition->showDescription() !!}
                         </p>
@@ -33,9 +33,11 @@
                             <a href="{{ route('petitions.export', $petition) }}">
                                 <button class="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded-lg w-full">Signataires</button>
                             </a>
-                            <!-- Bouton Partager sur WhatsApp -->
-                            <button id="copierBtn" onclick="copierLien(`{{ route('petitions.show', $petition) }}`)" class="bg-gray-500 hover:bg-gray-600 text-white px-2 py-1 rounded-lg w-full">copier le lien</button>
-                            <a href="{{ route('petitions.edit', $petition) }}" class="bg-orange-500 hover:bg-orange-600 px-2 py-2 rounded-lg text-white px-4 py-2 w-full text-center">Éditer</a>
+                           
+                            <button id="copierBtn" onclick="copierLien(`{{ route('petitions.show', $petition) }}`)" class="bg-gray-500 hover:bg-gray-600 text-white px-2 py-1 rounded-lg">copier le lien</button>
+                             
+                            <a href="{{ route('petitions.edit', $petition) }}" class="bg-orange-500 hover:bg-orange-600 px-2 py-2 rounded-lg text-white px-4 py-2 text-center">Éditer</a>
+                            
                             <form action="{{ route('petitions.destroy', $petition) }}" method="POST" class="inline-block">
                                 @csrf
                                 @method('DELETE')

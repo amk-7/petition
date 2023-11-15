@@ -43,6 +43,8 @@ class PetitionController extends Controller
             $name = str_replace(' ', '_', strtolower($request['titre'])).".".$file->getClientOriginalExtension();
             $file->storeAs('public/petitions', $name);
             $request['image'] = $name;
+        } else {
+            $request['image'] = "default.png";
         }
 
         $petition = Petition::create($request->all());

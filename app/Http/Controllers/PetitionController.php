@@ -47,6 +47,7 @@ class PetitionController extends Controller
             $request['image'] = "default.png";
         }
 
+        $request['etat'] = true;
         $petition = Petition::create($request->all());
 
         return redirect()->route('petitions.show', $petition->id);

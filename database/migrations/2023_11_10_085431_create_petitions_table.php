@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('titre')->unique();
             $table->string('image')->default('default.png');
-            $table->boolean('etat');
+            $table->boolean('etat')->default(true);
             $table->integer('objectif')->unsigned();
             $table->text('description');
             $table->timestamps();
